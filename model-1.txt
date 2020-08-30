@@ -1,0 +1,10 @@
+model{
+      for (i in 1:N.salmon){
+      y[i] ~ dnorm(mu.y[i],sigma2)
+      mu.y[i] <- beta.y[1] + beta.y[2]*spe[i] + beta.y[3]*y.t.1[i] + beta.y[4]*y.t.2[i] + beta.y[5]*y.s.w1[i] + beta.y[6]*y.s.e1[i] + beta.y[7]*y.s.w10[i] + beta.y[8]*y.s.e10[i]
+      }
+      for(k in 1:P.y){
+          beta.y[k] ~ dnorm(0.0,1.0E-10)
+          }
+      sigma2 ~ dgamma(0.001,0.001)
+}
